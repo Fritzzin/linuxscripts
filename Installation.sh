@@ -5,18 +5,11 @@ sudo apt update && sudo apt upgrade -y
 echo ""
 echo ""
 
-
-echo "ADD PPAs"
 sudo apt install software-properties-common -y
-sudo add-apt-repository ppa:papirus/papirus
-sudo add-apt-repository ppa:linrunner/tlp
-sudo apt update && apt upgrade -y
-echo ""
-echo ""
 
 
 echo "DEVELOPMENT"
-sudo apt install openssh-client openjdk-8-jdk vim nano git nodejs npm pgadmin4 -y
+sudo apt install openssh-client openjdk-8-jdk vim nano git nodejs npm -y
 echo ""
 echo ""
 
@@ -28,13 +21,13 @@ echo ""
 
 
 echo "SYSTEM"
-sudo apt install konsole flameshot gwenview dolphin ark timeshift ufw ksysguard tlp tlp-rdw gdebi-core -y
+sudo apt install timeshift ufw tlp tlp-rdw -y
 echo ""
 echo ""
 
 
 echo "MULTIMEDIA"
-sudo apt install vlc pavucontrol-qt ubuntu-restricted-extras -y
+sudo apt install vlc ubuntu-restricted-extras -y
 echo ""
 echo ""
 
@@ -46,7 +39,7 @@ echo ""
 
 
 echo "MISC/THEMING"
-sudo apt install wget neofetch curl build-essential ttf-mscorefonts-installer kvantum papirus-icon-theme -y
+sudo apt install wget neofetch curl build-essential papirus-icon-theme -y
 echo ""
 echo ""
 
@@ -59,6 +52,9 @@ echo ""
 
 echo"ENABLE FIREWALL"
 sudo ufw enable && sudo ufw allow ssh && sudo systemctl enable ufw
+sudo ufw allow ssh
+sudo ufw allow http
+sudo ufw allow postgresql
 echo ""
 echo ""
 
@@ -81,14 +77,12 @@ alias bashrc=\"nano ~/.bashrc\"
 alias aliases=\"nano ~/.bash_aliases\"
 
 # MAINTENANCE
-alias update=\"~/Scripts/Update.sh\"
-alias clean=\"~/Scripts/Clean.sh\"
+alias update=\"~/.scripts/Update.sh\"
+alias clean=\"~/.scripts/Clean.sh\"
 
 # MISC
 alias weather=\"curl http://wttr.in/Brazil:Lajeado\"
 
-# GIT
-alias cloneCarware=\"git clone https://gitlab.com/fritzzin/carware_hibernate.git ~/Documents/NetBeansProjects/carware\"
 " >> ~/.bash_aliases
 echo ""
 echo ""
@@ -97,3 +91,9 @@ echo ""
 echo "GIT CONFIGURATION"
 git config --global user.name "Augusto Fritz"
 git config --global user.email "augusto.fritz@universo.univates.br"
+
+# Create scripts folder
+mkdir ~/.scripts
+mv Update.sh ~/.scripts
+mv Clean.sh ~/.scripts
+mv MonoAudio.sh ~/.scripts
