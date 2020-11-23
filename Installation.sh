@@ -80,17 +80,10 @@ alias aliases=\"nano ~/.bash_aliases\"
 alias update=\"~/.scripts/Update.sh\"
 alias clean=\"~/.scripts/Clean.sh\"
 
-# MISC
-alias weather=\"curl http://wttr.in/Brazil:Lajeado\"
-
 " >> ~/.bash_aliases
 echo ""
 echo ""
 
-
-echo "GIT CONFIGURATION"
-git config --global user.name "Augusto Fritz"
-git config --global user.email "augusto.fritz@universo.univates.br"
 
 # Create scripts folder
 mkdir ~/.scripts
