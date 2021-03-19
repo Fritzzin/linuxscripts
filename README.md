@@ -3,7 +3,6 @@
 Clean.sh
 =================
 Runs a few commands related to maintenance of the system. Cleaning the TMP folder, cache, remove unesed packages, duplicate files and repairing broken packages.
-Installs a few applications I need in order to do my university assignments, including PostgreSQL, Open JDK 8, Git, etc...
 
 
 Installation.sh
