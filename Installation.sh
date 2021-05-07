@@ -1,33 +1,33 @@
 #!/bin/sh
 
-echo "UPDATE"
+echo "UPDATE AND INSTALL UPDATES"
 sudo apt update && sudo apt upgrade -y
 echo ""
 echo ""
 
-sudo apt install software-properties-common -y
-
-
 echo "DEVELOPMENT"
-sudo apt install openssh-client openjdk-8-jdk vim nano git nodejs npm -y
+sudo apt install build-essential wget curl openssh-client default-jdk default-jre vim nano git nodejs npm -y
+echo ""
+echo ""
+
+echo "BATTERY MANAGEMENT"
+sudo apt install tlp tlp-rdw -y
+echo ""
+echo ""
+
+echo "SECURITY"
+sudo apt install ufw -y
+echo ""
+echo ""
+
+echo "BACKUP TOOLS"
+sudo apt install timeshift -y
 echo ""
 echo ""
 
 
-echo "BROWSER"
-sudo apt install firefox -y
-echo ""
-echo ""
-
-
-echo "SYSTEM"
-sudo apt install timeshift ufw tlp tlp-rdw -y
-echo ""
-echo ""
-
-
-echo "MULTIMEDIA"
-sudo apt install vlc ubuntu-restricted-extras -y
+echo "MULTIMEDIA CODECS"
+sudo apt install vlc -y
 echo ""
 echo ""
 
@@ -39,7 +39,7 @@ echo ""
 
 
 echo "MISC/THEMING"
-sudo apt install wget neofetch curl build-essential papirus-icon-theme -y
+sudo apt install neofetch papirus-icon-theme software-properties-common -y
 echo ""
 echo ""
 
@@ -50,26 +50,21 @@ echo ""
 echo ""
 
 
-echo"ENABLE FIREWALL"
-sudo ufw enable && sudo ufw allow ssh && sudo systemctl enable ufw
-sudo ufw allow ssh
-sudo ufw allow http
-sudo ufw allow postgresql
+echo "ENABLE FIREWALL"
+sudo ufw enable
+sudo systemctl enable ufw
 echo ""
 echo ""
 
 
 echo"ENABLE TLP"
-sudo tlp start && sudo systemctl enable tlp
+sudo tlp start
+sudo systemctl enable tlp
 echo ""
 echo ""
 
 
-echo "BASHRC PS1"
-echo 'export PS1="\[\e[34m\]\w\[\e[m\]\\$ "' >> ~/.bashrc
-
-
-echo "CREATING ALIASES"
+echo "CREATING BASH ALIASES"
 touch ~/.bash_aliases
 echo "
 # BASH
@@ -85,8 +80,12 @@ echo ""
 echo ""
 
 
-# Create scripts folder
+echo "CREATING SCRIPTS FOLDER AND MOVING SCRIPTS"
 mkdir ~/.scripts
 mv Update.sh ~/.scripts
 mv Clean.sh ~/.scripts
 mv MonoAudio.sh ~/.scripts
+echo ""
+echo ""
+
+echo "DONE"
