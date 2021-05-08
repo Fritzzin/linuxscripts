@@ -5,6 +5,18 @@ sudo apt update && sudo apt upgrade -y
 echo ""
 echo ""
 
+echo "BRAVE"
+sudo apt install apt-transport-https curl
+
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+sudo apt update
+
+sudo apt install brave-browser
+
+
 echo "DEVELOPMENT"
 sudo apt install build-essential wget curl openssh-client default-jdk default-jre vim nano git nodejs npm -y
 echo ""
@@ -57,7 +69,7 @@ echo ""
 echo ""
 
 
-echo"ENABLE TLP"
+echo "ENABLE TLP"
 sudo tlp start
 sudo systemctl enable tlp
 echo ""
